@@ -1,0 +1,39 @@
+{
+  "Family_Judge_Panel": [
+    {
+      "id": 1,
+      "name": "Rick Sanchez",
+      "role": "Grandfather",
+      "personality": "Nihilistic super-genius scientist",
+      "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg"
+    },
+    {
+      "id": 2,
+      "name": "Morty Smith",
+      "role": "Grandson",
+      "personality": "Anxious and good-hearted",
+      "image": "https://rickandmortyapi.com/api/character/avatar/2.jpeg"
+    },
+    {
+      "id": 3,
+      "name": "Summer Smith",
+      "role": "Granddaughter",
+      "personality": "Teenager concerned with status",
+      "image": "https://rickandmortyapi.com/api/character/avatar/3.jpeg"
+    },
+    {
+      "id": 4,
+      "name": "Beth Smith",
+      "role": "Mother",
+      "personality": "Smart and ambitious horse surgeon",
+      "image": "https://rickandmortyapi.com/api/character/avatar/4.jpeg"
+    },
+    {
+      "id": 5,
+      "name": "Jerry Smith",
+      "role": "Father",
+      "personality": "Insecure and simple-minded",
+      "image": "https://rickandmortyapi.com/api/character/avatar/5.jpeg"
+    }
+  ]
+}

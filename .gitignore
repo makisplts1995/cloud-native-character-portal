@@ -1,0 +1,31 @@
+# Environment variables
+.env
+
+# Docker Volumes / Storage Data
+budibase_storage/
+portainer_storage/
+redis_storage/
+
+# Node.js
+node_modules/
+npm-debug.log
+
+# Archives and Backups
+*.tar.gz
+*.enc
+*.rar
+*.zip
+
+# Documentation
+*.docx
+*.pdf
+README.txt
+
+# OS Specific
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
