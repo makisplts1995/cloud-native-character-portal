@@ -40,7 +40,7 @@ A scalable, microservices-based web application for exploring the Rick and Morty
 1.  **Clone the repo:**
 
     ```bash
-    git clone <repository-url>
+    git clone https://github.com/makisplts1995/cloud-native-character-portal.git
     ```
 
 2.  **Start the stack:**
