@@ -1,4 +1,18 @@
-# Rick and Morty Cloud-Native Explorer
+<div align="center">
+
+  <h1>Cloud-Native Microservices Architecture</h1>
+  <h3>Cloud Computing and Advanced Application Architectures</h3>
+  <p><em>Rick and Morty Themed Implementation</em></p>
+
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Nginx](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
+![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
+![CouchDB](https://img.shields.io/badge/CouchDB-E42528?style=for-the-badge&logo=Apache%20CouchDB&logoColor=white)
+![Budibase](https://img.shields.io/badge/Budibase-%23000000.svg?style=for-the-badge&logo=budibase&logoColor=white)
+
+</div>
+
+<br />
 
 A scalable, microservices-based web application for exploring the Rick and Morty multiverse and managing favorite characters.
 
@@ -55,4 +69,4 @@ To enable the interactive features, add a **Groq API Key** in the Budibase setti
 
 ## License
 
-Academic exercise for the "Cloud Computing and Advanced Application Architectures" course at the University of Piraeus.
+Academic exercise for the "Cloud Computing and Advanced Application Architectures" course.
