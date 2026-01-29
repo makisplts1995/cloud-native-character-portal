@@ -1,95 +1,58 @@
-# 🛸 Rick and Morty Cloud-Native Explorer
+# Rick and Morty Cloud-Native Explorer
 
-![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=for-the-badge&logo=docker&logoColor=white)
-![Nginx](https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white)
-![Budibase](https://img.shields.io/badge/Budibase-000000?style=for-the-badge&logo=budibase&logoColor=white)
-![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
-![CouchDB](https://img.shields.io/badge/CouchDB-CW?style=for-the-badge&logo=apachecouchdb&logoColor=red)
+A scalable, microservices-based web application for exploring the Rick and Morty multiverse and managing favorite characters.
 
-A scalable, containerized web application that allows users to explore the Rick and Morty multiverse, manage their favorite characters, and interact with them using Generative AI.
+## Features
 
-## 🌟 Key Features
+- **Character Explorer**: Browse the full cast using the API.
+- **Family Interactions**: Dynamic interaction with characters using Groq.
+- **Favorites Collection**: Persist your favorite characters locally via CouchDB.
+- **Microservices**: Decoupled architecture (Budibase, CouchDB, Redis, Nginx).
+- **Mock Context**: Custom mock server data for application context.
 
-- **Character Explorer**: Browse the full cast of the show using the [Rick and Morty API](https://rickandmortyapi.com/).
-- **AI "Family Judge"**: Interaction with characters where Rick, Morty, or other family members "judge" your choices using the **Groq LLM**.
-- **Favorites Collection**: Persist your favorite characters in a local **CouchDB** database.
-- **Microservices Architecture**: Fully decoupled services for UI, Data, Caching, and Logic.
-- **Mock APIs**: Custom mock servers for landing page content and AI context.
+## Architecture
 
-## 🏗️ Architecture
+| Service       | Technology  | Description                   |
+| :------------ | :---------- | :---------------------------- |
+| **Gateway**   | Nginx       | Single entry point (Port 80). |
+| **UI/Logic**  | Budibase    | Frontend and business logic.  |
+| **Database**  | CouchDB     | NoSQL database for favorites. |
+| **Cache**     | Redis       | Session state management.     |
+| **Mock APIs** | JSON Server | Static data providers.        |
+| **Ops**       | Portainer   | Container management.         |
 
-The project is built on a **Microservices Architecture** orchestrated by **Docker Compose**:
+## Quick Start
 
-| Service        | Technology  | Description                                                        |
-| :------------- | :---------- | :----------------------------------------------------------------- |
-| **Gateway**    | Nginx       | Single entry point (Port 80) routing traffic to internal services. |
-| **UI/Logic**   | Budibase    | Low-code platform handling the frontend and business logic.        |
-| **Database**   | CouchDB     | NoSQL database for storing user favorites.                         |
-| **Cache**      | Redis       | In-memory store for session management and performance.            |
-| **Mock APIs**  | JSON Server | Provides static context (Family config, Landing page data).        |
-| **Management** | Portainer   | Container management GUI.                                          |
-
-## 📂 Project Structure
-
-```
-├── App Export/           # Application export archives (.tar.gz)
-├── Data Context/         # Static data for Mock APIs (JSON files)
-├── Documentation/        # Academic reports and manuals
-├── Infrastructure/       # Docker configuration (compose.yaml, nginx.conf)
-└── Persistent Storage/   # Persisted data volumes (Database, Redis)
-```
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- **Docker Desktop** (running)
-- **Git**
-
-### Installation
-
-1.  **Clone the repository:**
+1.  **Clone the repo:**
 
     ```bash
     git clone <repository-url>
-    cd <repository-folder>
     ```
 
-2.  **Navigate to the Infrastructure setup:**
+2.  **Start the stack:**
 
     ```bash
     cd Infrastructure
-    ```
-
-3.  **Start the services:**
-
-    ```bash
     docker compose up -d --build
     ```
 
-4.  **Access the Application:**
-    - **Main App:** [http://localhost](http://localhost)
-    - **Portainer (Manager):** [http://localhost:9000](http://localhost:9000)
-    - **Budibase Builder:** [http://localhost:10000](http://localhost:10000)
+3.  **Access:**
+    - **App:** [http://localhost](http://localhost)
+    - **Portainer:** [http://localhost:9000](http://localhost:9000)
 
-## 🔧 Configuration
+## Configuration
 
-### 🔑 Groq API Setup (Required for AI Features)
+### API Keys
 
-The application uses **Groq Cloud** for the AI personality features. You must provide your own API key:
+To enable the interactive features, add a **Groq API Key** in the Budibase settings:
 
-1.  Get an API Key from [Groq Console](https://console.groq.com/keys).
-2.  Open the Budibase App (**Design** tab).
-3.  Go to **Data Sources** -> **Groq**.
-4.  Update the `Authorization` header with your key: `Bearer gsk_...`
+- **Location:** Budibase > Design > Data Sources > Groq
+- **Header:** `Authorization: Bearer <your-api-key>`
 
 ### Defaults
 
-The application is pre-configured with default credentials for development:
-
 - **CouchDB**: `admin` / `admin`
-- **Ports**: Exposed in `Infrastructure/compose.yaml` (80, 5984, 6379, 10000).
 
-## 📄 License
+## License
 
-This project is an academic exercise for the "Cloud Computing and Advanced Application Architectures" course at the University of Piraeus.
+Academic exercise for the "Cloud Computing and Advanced Application Architectures" course at the University of Piraeus.
