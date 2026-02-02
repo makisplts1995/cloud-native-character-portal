@@ -11,8 +11,7 @@ node_modules/
 npm-debug.log
 
 # Archives and Backups
-*.tar.gz
-*.enc
+
 *.rar
 *.zip
 
