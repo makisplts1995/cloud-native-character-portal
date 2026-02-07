@@ -11,6 +11,7 @@
 ![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
 ![CouchDB](https://img.shields.io/badge/CouchDB-E42528?style=for-the-badge&logo=Apache%20CouchDB&logoColor=white)
 ![Budibase](https://img.shields.io/badge/Budibase-%23000000.svg?style=for-the-badge&logo=budibase&logoColor=white)
+![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)
 
 </div>
 
