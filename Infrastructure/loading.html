@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>System Initializing</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #0f172a;
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          sans-serif;
+        color: #e2e8f0;
+        overflow: hidden;
+      }
+
+      .container {
+        text-align: center;
+        position: relative;
+        z-index: 10;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        background: linear-gradient(to right, #60a5fa, #c084fc);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: pulse 3s ease-in-out infinite;
+      }
+
+      p {
+        font-size: 1.1rem;
+        color: #94a3b8;
+        margin-bottom: 2rem;
+      }
+
+      .loader {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        margin: 0 auto;
+      }
+
+      .loader div {
+        box-sizing: border-box;
+        display: block;
+        position: absolute;
+        width: 64px;
+        height: 64px;
+        margin: 8px;
+        border: 4px solid #fff;
+        border-radius: 50%;
+        animation: ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        border-color: #60a5fa transparent transparent transparent;
+      }
+
+      .loader div:nth-child(1) {
+        animation-delay: -0.45s;
+      }
+
+      .loader div:nth-child(2) {
+        animation-delay: -0.3s;
+      }
+
+      .loader div:nth-child(3) {
+        animation-delay: -0.15s;
+      }
+
+      @keyframes ring {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.8;
+        }
+      }
+
+      .status {
+        margin-top: 1.5rem;
+        font-size: 0.875rem;
+        color: #64748b;
+        font-family: monospace;
+      }
+
+      /* Background simplistic grid */
+      .bg-grid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        background-size: 40px 40px;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <div class="container">
+      <div class="loader">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <h1>System Initializing</h1>
+      <p>We are spinning up the containers. Please wait...</p>
+      <div class="status" id="status-text">Checking status...</div>
+    </div>
+
+    <script>
+      const statusText = document.getElementById("status-text");
+      let dots = 0;
+
+      // Animate status text
+      setInterval(() => {
+        dots = (dots + 1) % 4;
+        statusText.textContent = "Waiting for services" + ".".repeat(dots);
+      }, 500);
+
+      // Check availability every 3 seconds
+      async function checkAvailability() {
+        try {
+          // We fetch the current URL. If Nginx serves the app (200 OK) instead of this error page, we reload.
+          // However, since this page IS served on 502, we need to check if the response is NO LONGER 502.
+          // But fetch might not return the status code if served via internal redirect easily?
+          // Actually, if we just reload, Nginx will serve the app if ready.
+
+          // Simpler approach: Just reload every 5 seconds.
+          // Or try to fetch a specific health endpoint if available.
+          // Let's just try to fetch '/'
+
+          const response = await fetch("/", {
+            method: "HEAD",
+            cache: "no-cache",
+          });
+
+          // If we get a 200, 301, 302, etc., it means the app is likely up (or at least Nginx isn't throwing 502)
+          if (response.status >= 200 && response.status < 500) {
+            window.location.reload();
+          }
+        } catch (e) {
+          // Still failing (network error or other)
+          console.log("Still waiting...");
+        }
+      }
+
+      setInterval(checkAvailability, 3000);
+    </script>
+  </body>
+</html>

@@ -51,8 +51,14 @@ A scalable, microservices-based web application for exploring the Rick and Morty
     ```
 
 3.  **Access:**
-    - **App:** [http://localhost](http://localhost)
+    - **App:** [http://localhost](http://localhost) (You may see a "System Initializing" screen while containers start up)
     - **Portainer:** [http://localhost:9000](http://localhost:9000)
+
+4.  **Import Application:**
+    - Open Budibase at [http://localhost](http://localhost).
+    - Create an admin account.
+    - Click **Create New App** -> **Import App**.
+    - Select the file located in: `App Export/cloudcomputing-export-1770413640334.enc.tar.gz`.
 
 ## Configuration
 
